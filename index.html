@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Special FC — 2026</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/src/style.css"/>
+</head>
+<body>
+
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
+
+<!-- Admin login overlay -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-login-box">
+    <h2>🔐 ADMIN ACCESS</h2>
+    <p>Enter password to manage match scores &amp; stats</p>
+    <input type="password" id="adminPwd" placeholder="••••••••"
+      onkeyup="if(event.key==='Enter') window._sfc.checkPwd()"/>
+    <div class="pwd-err" id="pwdErr">❌ Incorrect password</div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+      <button class="btn btn-primary" onclick="window._sfc.checkPwd()">Enter</button>
+      <button class="btn btn-secondary" onclick="window._sfc.closeOverlay()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap" id="logoWrap">
+      <div class="logo-ring"><span class="logo-ball">⚽</span></div>
+      <div class="logo-hint">CLICK 7×</div>
+    </div>
+    <h1>SPECIAL FC</h1>
+    <div class="tagline">Abuja, Nigeria &nbsp;·&nbsp; The Beautiful Game</div>
+    <div class="season-strip">
+      <span>2026 SEASON</span>
+      <span class="strip-dot"></span>
+      <span>DOUBLE ROUND-ROBIN</span>
+      <span class="strip-dot"></span>
+      <span>4 TEAMS</span>
+    </div>
+  </div>
+</header>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <div class="tab active"  data-tab="standings"><span class="tab-icon">🏆</span> Standings</div>
+    <div class="tab"         data-tab="fixtures"> <span class="tab-icon">📅</span> Fixtures</div>
+    <div class="tab"         data-tab="stats">    <span class="tab-icon">📊</span> Stats</div>
+    <div class="tab"         data-tab="squads">   <span class="tab-icon">👥</span> Squads</div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ── STANDINGS TAB ── -->
+  <div class="tab-content active" id="tab-standings">
+
+    <!-- Admin panel (shown after login) -->
+    <div class="admin-panel" id="adminPanel">
+      <div class="admin-panel-header">
+        <div class="admin-panel-title">⚙️ ADMIN PANEL</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn btn-sm"
+            style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)"
+            onclick="window._sfc.exportData()">📤 Export</button>
+          <button class="btn btn-sm btn-danger" onclick="window._sfc.closeAdmin()">✕ Close</button>
+        </div>
+      </div>
+      <div class="admin-tabs" id="adminTabsNav"></div>
+      <div id="adminTabsBodies"></div>
+    </div>
+
+    <!-- Summary cards -->
+    <div class="stat-cards" id="summaryCards"></div>
+
+    <!-- League table -->
+    <div class="section-head">
+      <div class="section-title">League Table</div>
+      <div class="section-sub">Updated live</div>
+    </div>
+    <div class="card">
+      <div class="standings-wrap">
+        <table class="standings">
+          <thead><tr>
+            <th style="width:44px">Pos</th>
+            <th class="left">Team</th>
+            <th title="Played">P</th>
+            <th title="Won">W</th>
+            <th title="Drew">D</th>
+            <th title="Lost">L</th>
+            <th title="Goals For">GF</th>
+            <th title="Goals Against">GA</th>
+            <th title="Goal Difference">GD</th>
+            <th title="Points">Pts</th>
+            <th>Form</th>
+          </tr></thead>
+          <tbody id="standingsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FIXTURES TAB ── -->
+  <div class="tab-content" id="tab-fixtures">
+    <div class="section-head">
+      <div class="section-title">Fixture Schedule</div>
+      <div class="section-sub">6 Matchdays</div>
+    </div>
+    <div id="fixturesBody"></div>
+  </div>
+
+  <!-- ── STATS TAB ── -->
+  <div class="tab-content" id="tab-stats">
+    <div class="section-head">
+      <div class="section-title">Player Statistics</div>
+      <div class="section-sub">2026 Season</div>
+    </div>
+    <div class="stats-grid">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-header-title">⚽ Top Scorers</span>
+          <span class="card-header-sub">Goals</span>
+        </div>
+        <div id="topScorers"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-header-title">🎯 Top Assists</span>
+          <span class="card-header-sub">Assists</span>
+        </div>
+        <div id="topAssists"></div>
+      </div>
+    </div>
+    <div style="margin-top:20px" class="stats-grid">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-header-title">📈 Goal Contributions</span>
+          <span class="card-header-sub">Goals + Assists</span>
+        </div>
+        <div id="topContributions"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-header-title">🏅 Team Stats</span>
+          <span class="card-header-sub">Season overview</span>
+        </div>
+        <div id="teamStats"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SQUADS TAB ── -->
+  <div class="tab-content" id="tab-squads">
+    <div class="section-head">
+      <div class="section-title">Squad Lists</div>
+      <div class="section-sub">Players &amp; Stats</div>
+    </div>
+    <div class="squads-grid" id="squadsGrid"></div>
+  </div>
+
+</main>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
