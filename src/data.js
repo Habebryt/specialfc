@@ -1,6 +1,14 @@
 // ============================================================
 //  SPECIAL FC — 2026 LEAGUE DATA
-//  Edit this file to update teams, fixtures, squads, config.
+//  ⭐ This is the only file you need to edit for updates.
+//
+//  WORKFLOW FOR UPDATING SCORES AFTER EACH MATCHDAY:
+//  1. Open the site locally  →  npm run dev
+//  2. Click ⚽ logo 7× → enter scores + scorers in admin panel
+//  3. Admin → Data tab → Export Data → copy the JSON
+//  4. Paste it into RESULTS at the bottom of this file
+//  5. git add . && git commit -m "MD2 scores" && git push
+//  6. Vercel deploys in ~30s — everyone sees the update ✅
 // ============================================================
 
 // ── League Config ────────────────────────────────────────────
@@ -30,7 +38,6 @@ export const SQUADS = {
     "Clint", "Don", "Ps5", "T.M",
     "Near Here", "Matthew", "Energy", "Val",
     "Praise",
-    
   ],
   Flamengo: [
     "Shola", "Khalifa", "Mamba", "Yinka",
@@ -117,3 +124,32 @@ export const SLOT_TIMES = {
   Early: "7:30–8:15",
   Late:  "8:20–9:05",
 };
+
+// ── Match Results ─────────────────────────────────────────────
+//  HOW TO UPDATE AFTER EACH MATCHDAY:
+//  1. Run locally: npm run dev
+//  2. Enter scores via admin panel (⚽ ×7 → password)
+//  3. Admin → Data tab → Export Data → copy the JSON
+//  4. Replace the {} below with the copied JSON
+//  5. git add . && git commit -m "MD1 scores" && git push
+//
+//  KEY FORMAT:  "md-matchIndex"
+//    MD1 early = "1-0"   MD1 late = "1-1"
+//    MD2 early = "2-0"   MD2 late = "2-1"   ... etc.
+//
+//  EXAMPLE of a completed entry:
+//  "1-0": {
+//    "hg": "3", "ag": "1",
+//    "events": [
+//      { "team": "Ajax",     "scorer": "Clint", "assist": "Don" },
+//      { "team": "Ajax",     "scorer": "Energy", "assist": "" },
+//      { "team": "Ajax",     "scorer": "Val",   "assist": "Ps5" },
+//      { "team": "Flamengo", "scorer": "Shola", "assist": "" }
+//    ]
+//  },
+//
+//  ↓↓↓  PASTE YOUR EXPORTED JSON OBJECT CONTENTS HERE  ↓↓↓
+export const RESULTS = {
+
+};
+//  ↑↑↑ ─────────────────────────────────────────────────────── ↑↑↑

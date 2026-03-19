@@ -4,20 +4,35 @@
 //  Edit data.js to change teams/fixtures/squads.
 // ============================================================
 
-import { LEAGUE, TEAMS, SQUADS, FIXTURES, SLOT_TIMES } from './data.js';
+import { LEAGUE, TEAMS, SQUADS, FIXTURES, SLOT_TIMES, RESULTS } from './data.js';
 
 const TEAM_NAMES = Object.keys(TEAMS);
 
 // ── Storage ──────────────────────────────────────────────────
-// Data is stored in localStorage — persists in this browser.
-// Use Export/Import in the admin Data tab to move data between devices.
+// SOURCE OF TRUTH hierarchy:
+//   1. localStorage  — admin's local edits (working copy)
+//   2. RESULTS       — data embedded in data.js and deployed to Vercel
+//
+// When you export from the admin panel and paste into RESULTS,
+// then push to git, RESULTS becomes the live source for all viewers.
+// localStorage overrides RESULTS only on the device where you're
+// actively editing (so your local work-in-progress shows up too).
 const STORAGE_KEY = 'sfc26_v2';
 
 function getMatchKey(md, idx) { return `${md}-${idx}`; }
 function saveData(d)           { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+
 function loadData() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
-  catch { return {}; }
+  // Merge: RESULTS (deployed) ← overridden by → localStorage (local edits)
+  let local = {};
+  try { local = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { local = {}; }
+  return { ...RESULTS, ...local };
+}
+
+// Returns only localStorage data — used for export so you get everything
+// including your current session's edits, not just what's in RESULTS.
+function loadLocalData() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
 }
 
 // ── Compute standings + stats from raw match data ─────────────
@@ -438,6 +453,12 @@ function switchAdminTab(ti) {
 }
 
 function exportData() {
+  const merged = loadData();
+  const json   = JSON.stringify(merged, null, 2);
+  const jsonEsc = JSON.stringify(json);
+  document.getElementById("dataIO").innerHTML = `<p style="font-size:12px;color:#555;margin-bottom:10px;line-height:1.6">Copy below → paste into <code>RESULTS = { }</code> in <strong>src/data.js</strong> → <code>git push</code></p><textarea class="export-box" readonly>${json}</textarea><button class="btn btn-sm btn-primary" style="margin-top:8px" onclick="navigator.clipboard.writeText(${jsonEsc}).then(()=>window._sfc.showToast('📋 Copied!'))">📋 Copy to clipboard</button>`;
+}
+function exportData_OLD() {
   const json = JSON.stringify(loadData(), null, 2);
   document.getElementById('dataIO').innerHTML = `
     <textarea class="export-box" readonly>${json}</textarea>
