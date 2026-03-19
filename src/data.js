@@ -86,7 +86,7 @@ export const FIXTURES = [
     ],
   },
   {
-    md: 3,
+    md: 4,
     date: "Sat 18 Apr 2026",
     matches: [
       { home: "Lyon",     away: "Ajax",      slot: "Early" },
@@ -94,7 +94,7 @@ export const FIXTURES = [
     ],
   },
   {
-    md: 4,
+    md: 3,
     date: "Sat 02 May 2026",
     matches: [
       { home: "Wolfsburg",away: "Ajax",      slot: "Early" },
