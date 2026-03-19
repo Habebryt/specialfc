@@ -29,14 +29,18 @@ export const SQUADS = {
   Ajax: [
     "Clint", "Don", "Ps5", "T.M",
     "Near Here", "Matthew", "Energy", "Val",
+    "Praise",
+    
   ],
   Flamengo: [
     "Shola", "Khalifa", "Mamba", "Yinka",
     "Precious", "Godbam", "Miles", "Salvation", "Dr. Luther",
+    "Sped Djos",
   ],
   Lyon: [
     "Jerry", "Adam", "Jude", "Rabiu",
-    "Promise", "Chally", "Dodo (Rabiu Bro)", "Gerald", "Khalifa (Solar)",
+    "Promise", "Chally", "Todo (Rabiu Bro)", "Gerald", "Khalifa (Solar)",
+    "DC",
   ],
   Wolfsburg: [
     "Sam", "Brown", "Gbenga", "Kanayo",
