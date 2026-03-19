@@ -13,20 +13,20 @@
 
 // ── League Config ────────────────────────────────────────────
 export const LEAGUE = {
-  name:    "Special FC",
-  season:  "2026",
-  venue:   "Abuja, Nigeria",
-  format:  "Double Round-Robin",
+  name: "Special FC",
+  season: "2026",
+  venue: "Abuja, Nigeria",
+  format: "Double Round-Robin",
   totalMatchdays: 6,
-  adminPassword:  "sfc2026",       // ← change this!
+  adminPassword: "sfc2026",       // ← change this!
 };
 
 // ── Team Colours ──────────────────────────────────────────────
 // color: main colour  |  abbr: 3-letter badge label
 export const TEAMS = {
-  Ajax:      { color: "#D42B2B", abbr: "AJX" },
-  Flamengo:  { color: "#B01020", abbr: "FLA" },
-  Lyon:      { color: "#1859B8", abbr: "LYO" },
+  Ajax: { color: "#D42B2B", abbr: "AJX" },
+  Flamengo: { color: "#B01020", abbr: "FLA" },
+  Lyon: { color: "#1859B8", abbr: "LYO" },
   Wolfsburg: { color: "#27A43C", abbr: "WOL" },
 };
 
@@ -73,8 +73,8 @@ export const FIXTURES = [
     md: 1,
     date: "Sat 21 Mar 2026",
     matches: [
-      { home: "Ajax",     away: "Flamengo",  slot: "Early" },
-      { home: "Lyon",     away: "Wolfsburg", slot: "Late"  },
+      { home: "Ajax", away: "Flamengo", slot: "Early" },
+      { home: "Lyon", away: "Wolfsburg", slot: "Late" },
     ],
   },
   {
@@ -82,39 +82,40 @@ export const FIXTURES = [
     date: "Sat 04 Apr 2026",
     matches: [
       { home: "Flamengo", away: "Wolfsburg", slot: "Early" },
-      { home: "Ajax",     away: "Lyon",      slot: "Late"  },
-    ],
-  },
-  {
-    md: 4,
-    date: "Sat 18 Apr 2026",
-    matches: [
-      { home: "Lyon",     away: "Ajax",      slot: "Early" },
-      { home: "Wolfsburg",away: "Flamengo",  slot: "Late"  },
+      { home: "Ajax", away: "Lyon", slot: "Late" },
     ],
   },
   {
     md: 3,
+    date: "Sat 18 Apr 2026",
+    matches: [
+
+      { home: "Wolfsburg", away: "Ajax", slot: "Early" },
+      { home: "Flamengo", away: "Lyon", slot: "Late" },
+    ],
+  },
+  {
+    md: 4,
     date: "Sat 02 May 2026",
     matches: [
-      { home: "Wolfsburg",away: "Ajax",      slot: "Early" },
-      { home: "Flamengo", away: "Lyon",      slot: "Late"  },
+      { home: "Lyon", away: "Ajax", slot: "Early" },
+      { home: "Wolfsburg", away: "Flamengo", slot: "Late" },
     ],
   },
   {
     md: 5,
     date: "Sat 16 May 2026",
     matches: [
-      { home: "Lyon",     away: "Flamengo",  slot: "Early" },
-      { home: "Ajax",     away: "Wolfsburg", slot: "Late"  },
+      { home: "Lyon", away: "Flamengo", slot: "Early" },
+      { home: "Ajax", away: "Wolfsburg", slot: "Late" },
     ],
   },
   {
     md: 6,
     date: "Sat 06 Jun 2026",
     matches: [
-      { home: "Wolfsburg",away: "Lyon",      slot: "Early" },
-      { home: "Flamengo", away: "Ajax",      slot: "Late"  },
+      { home: "Wolfsburg", away: "Lyon", slot: "Early" },
+      { home: "Flamengo", away: "Ajax", slot: "Late" },
     ],
   },
 ];
@@ -122,7 +123,7 @@ export const FIXTURES = [
 // ── Slot Times ────────────────────────────────────────────────
 export const SLOT_TIMES = {
   Early: "7:30–8:15",
-  Late:  "8:20–9:05",
+  Late: "8:20–9:05",
 };
 
 // ── Match Results ─────────────────────────────────────────────
