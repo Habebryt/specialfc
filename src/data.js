@@ -1,53 +1,43 @@
 // ============================================================
 //  SPECIAL FC — 2026 LEAGUE DATA
-//  ⭐ This is the only file you need to edit for updates.
+//  ⭐ Only file you need to edit for all updates.
 //
-//  WORKFLOW FOR UPDATING SCORES AFTER EACH MATCHDAY:
-//  1. Open the site locally  →  npm run dev
-//  2. Click ⚽ logo 7× → enter scores + scorers in admin panel
-//  3. Admin → Data tab → Export Data → copy the JSON
-//  4. Paste it into RESULTS at the bottom of this file
-//  5. git add . && git commit -m "MD2 scores" && git push
-//  6. Vercel deploys in ~30s — everyone sees the update ✅
+//  SCORE UPDATE WORKFLOW (after every matchday):
+//  1. npm run dev  →  enter scores in admin panel
+//  2. Admin → "📤 Export for data.js" → copy the block
+//  3. Replace the entire RESULTS section at the bottom
+//  4. git add src/data.js && git commit -m "MD1 results" && git push
+//  5. Vercel deploys in ~30s ✅
 // ============================================================
 
-// ── League Config ────────────────────────────────────────────
 export const LEAGUE = {
-  name: "Special FC",
-  season: "2026",
-  venue: "Abuja, Nigeria",
-  format: "Double Round-Robin",
+  name:           "Special FC",
+  season:         "2026",
+  venue:          "Abuja, Nigeria",
+  format:         "Double Round-Robin",
   totalMatchdays: 6,
-  adminPassword: "sfc2026",       // ← change this!
+  adminPassword:  "sfc2026",
 };
 
-// ── Team Colours ──────────────────────────────────────────────
-// color: main colour  |  abbr: 3-letter badge label
 export const TEAMS = {
-  Ajax: { color: "#D42B2B", abbr: "AJX" },
-  Flamengo: { color: "#B01020", abbr: "FLA" },
-  Lyon: { color: "#1859B8", abbr: "LYO" },
+  Ajax:      { color: "#D42B2B", abbr: "AJX" },
+  Flamengo:  { color: "#B01020", abbr: "FLA" },
+  Lyon:      { color: "#1859B8", abbr: "LYO" },
   Wolfsburg: { color: "#27A43C", abbr: "WOL" },
 };
 
-// ── Squad Lists ───────────────────────────────────────────────
-// Add or remove players here. Names must match exactly what
-// you enter as scorers/assist providers in the admin panel.
 export const SQUADS = {
   Ajax: [
     "Clint", "Don", "Ps5", "T.M",
-    "Near Here", "Matthew", "Energy", "Val",
-    "Praise",
+    "Near Here", "Matthew", "Energy", "Val", "Praise",
   ],
   Flamengo: [
     "Shola", "Khalifa", "Mamba", "Yinka",
-    "Precious", "Godbam", "Miles", "Salvation", "Dr. Luther",
-    "Sped Djos",
+    "Precious", "Godbam", "Miles", "Salvation", "Dr. Luther", "Sped Djos",
   ],
   Lyon: [
     "Jerry", "Adam", "Jude", "Rabiu",
-    "Promise", "Chally", "Todo (Rabiu Bro)", "Gerald", "Khalifa (Solar)",
-    "DC",
+    "Promise", "Chally", "Todo (Rabiu Bro)", "Gerald", "Khalifa (Solar)", "DC",
   ],
   Wolfsburg: [
     "Sam", "Brown", "Gbenga", "Kanayo",
@@ -55,102 +45,122 @@ export const SQUADS = {
   ],
 };
 
-// ── Fixture Schedule ──────────────────────────────────────────
-// Each matchday has 2 matches (early + late slot).
-// Slot distribution is balanced: every team plays 3 Early + 3 Late.
-//
-//  MD | Date           | Early (7:30–8:15)        | Late (8:20–9:05)
-//  1  | Sat 21 Mar 26  | Ajax vs Flamengo          | Lyon vs Wolfsburg
-//  2  | Sat 04 Apr 26  | Flamengo vs Wolfsburg      | Ajax vs Lyon
-//  3  | Sat 18 Apr 26  | Lyon vs Ajax               | Wolfsburg vs Flamengo
-//  4  | Sat 02 May 26  | Wolfsburg vs Ajax          | Flamengo vs Lyon
-//  5  | Sat 16 May 26  | Lyon vs Flamengo           | Ajax vs Wolfsburg
-//  6  | Sat 06 Jun 26  | Wolfsburg vs Lyon          | Flamengo vs Ajax
-//
-// Slot count per team: Ajax 3E/3L · Flamengo 3E/3L · Lyon 3E/3L · Wolfsburg 3E/3L ✓
 export const FIXTURES = [
-  {
-    md: 1,
-    date: "Sat 21 Mar 2026",
-    matches: [
-      { home: "Ajax", away: "Flamengo", slot: "Early" },
-      { home: "Lyon", away: "Wolfsburg", slot: "Late" },
-    ],
-  },
-  {
-    md: 2,
-    date: "Sat 04 Apr 2026",
-    matches: [
-      { home: "Flamengo", away: "Wolfsburg", slot: "Early" },
-      { home: "Ajax", away: "Lyon", slot: "Late" },
-    ],
-  },
-  {
-    md: 3,
-    date: "Sat 18 Apr 2026",
-    matches: [
-
-      { home: "Wolfsburg", away: "Ajax", slot: "Early" },
-      { home: "Flamengo", away: "Lyon", slot: "Late" },
-    ],
-  },
-  {
-    md: 4,
-    date: "Sat 02 May 2026",
-    matches: [
-      { home: "Lyon", away: "Ajax", slot: "Early" },
-      { home: "Wolfsburg", away: "Flamengo", slot: "Late" },
-    ],
-  },
-  {
-    md: 5,
-    date: "Sat 16 May 2026",
-    matches: [
-      { home: "Lyon", away: "Flamengo", slot: "Early" },
-      { home: "Ajax", away: "Wolfsburg", slot: "Late" },
-    ],
-  },
-  {
-    md: 6,
-    date: "Sat 06 Jun 2026",
-    matches: [
-      { home: "Wolfsburg", away: "Lyon", slot: "Early" },
-      { home: "Flamengo", away: "Ajax", slot: "Late" },
-    ],
-  },
+  { md:1, date:"Sat 21 Mar 2026", matches:[
+    { home:"Ajax",      away:"Flamengo",  slot:"Early" },
+    { home:"Lyon",      away:"Wolfsburg", slot:"Late"  },
+  ]},
+  { md:2, date:"Sat 04 Apr 2026", matches:[
+    { home:"Flamengo",  away:"Wolfsburg", slot:"Early" },
+    { home:"Ajax",      away:"Lyon",      slot:"Late"  },
+  ]},
+  { md:3, date:"Sat 18 Apr 2026", matches:[
+    { home:"Lyon",      away:"Ajax",      slot:"Early" },
+    { home:"Wolfsburg", away:"Flamengo",  slot:"Late"  },
+  ]},
+  { md:4, date:"Sat 02 May 2026", matches:[
+    { home:"Wolfsburg", away:"Ajax",      slot:"Early" },
+    { home:"Flamengo",  away:"Lyon",      slot:"Late"  },
+  ]},
+  { md:5, date:"Sat 16 May 2026", matches:[
+    { home:"Lyon",      away:"Flamengo",  slot:"Early" },
+    { home:"Ajax",      away:"Wolfsburg", slot:"Late"  },
+  ]},
+  { md:6, date:"Sat 06 Jun 2026", matches:[
+    { home:"Wolfsburg", away:"Lyon",      slot:"Early" },
+    { home:"Flamengo",  away:"Ajax",      slot:"Late"  },
+  ]},
 ];
 
-// ── Slot Times ────────────────────────────────────────────────
 export const SLOT_TIMES = {
   Early: "7:30–8:15",
-  Late: "8:20–9:05",
+  Late:  "8:20–9:05",
 };
 
-// ── Match Results ─────────────────────────────────────────────
-//  HOW TO UPDATE AFTER EACH MATCHDAY:
-//  1. Run locally: npm run dev
-//  2. Enter scores via admin panel (⚽ ×7 → password)
-//  3. Admin → Data tab → Export Data → copy the JSON
-//  4. Replace the {} below with the copied JSON
-//  5. git add . && git commit -m "MD1 scores" && git push
+// ══════════════════════════════════════════════════════════════
+//  MATCH RESULTS
+//  ── HOW TO UPDATE ──────────────────────────────────────────
+//  After matchday: Admin panel → "📤 Export for data.js"
+//  Copy the output and replace EVERYTHING between the
+//  two ═══ lines below (keep the export const RESULTS = line).
 //
-//  KEY FORMAT:  "md-matchIndex"
-//    MD1 early = "1-0"   MD1 late = "1-1"
-//    MD2 early = "2-0"   MD2 late = "2-1"   ... etc.
+//  EVENT TYPES:
+//    { "type":"goal",     "team":"Ajax", "scorer":"Don",  "assist":"Clint" }
+//    { "type":"own_goal", "team":"Ajax", "scorer":"Val"  }  ← Val (Ajax) OG → counts for opponent
 //
-//  EXAMPLE of a completed entry:
-//  "1-0": {
-//    "hg": "3", "ag": "1",
-//    "events": [
-//      { "team": "Ajax",     "scorer": "Clint", "assist": "Don" },
-//      { "team": "Ajax",     "scorer": "Energy", "assist": "" },
-//      { "team": "Ajax",     "scorer": "Val",   "assist": "Ps5" },
-//      { "team": "Flamengo", "scorer": "Shola", "assist": "" }
-//    ]
-//  },
+//  CARD TYPES:
+//    { "type":"yellow", "team":"Ajax", "player":"Clint" }
+//    { "type":"red",    "team":"Ajax", "player":"Clint" }
 //
-//  ↓↓↓  PASTE YOUR EXPORTED JSON OBJECT CONTENTS HERE  ↓↓↓
+//  KEY FORMAT:  "md-matchIndex"  (matchIndex is 0 or 1)
+//    MD1 Early → "1-0"  |  MD1 Late → "1-1"
+//    MD2 Early → "2-0"  |  MD2 Late → "2-1"  … etc.
+// ══════════════════════════════════════════════════════════════
 export const RESULTS = {
-
+"1-0": {
+    "hg": "1",
+    "ag": "1",
+    "events": [
+      {
+        "type": "goal",
+        "team": "Ajax",
+        "scorer": "Don",
+        "assist": ""
+      },
+      {
+        "type": "goal",
+        "team": "Flamengo",
+        "scorer": "Shola",
+        "assist": "Ben"
+      }
+    ],
+    "cards": []
+  },
+  "1-1": {
+    "hg": "1",
+    "ag": "2",
+    "events": [
+      {
+        "type": "goal",
+        "team": "Lyon",
+        "scorer": "Rabiu",
+        "assist": "Adam"
+      },
+      {
+        "type": "goal",
+        "team": "Wolfsburg",
+        "scorer": "Habeeb",
+        "assist": "Brown"
+      },
+      {
+        "type": "goal",
+        "team": "Wolfsburg",
+        "scorer": "Sam",
+        "assist": "Habeeb"
+      }
+    ],
+    "cards": [
+      {
+        "type": "yellow",
+        "team": "Wolfsburg",
+        "player": "Habeeb"
+      },
+      {
+        "type": "red",
+        "team": "Lyon",
+        "player": "Rabiu"
+      },
+      {
+        "type": "yellow",
+        "team": "Lyon",
+        "player": "Todo (Rabiu Bro)"
+      },
+      {
+        "type": "yellow",
+        "team": "Lyon",
+        "player": "Gerald"
+      }
+    ]
+  }
 };
-//  ↑↑↑ ─────────────────────────────────────────────────────── ↑↑↑
+// ══════════════════════════════════════════════════════════════

@@ -315,3 +315,186 @@ table.standings { width: 100%; border-collapse: collapse; min-width: 540px; }
   .goal-entry-row { grid-template-columns: 1fr 1fr 1fr auto; }
   .tab           { padding: 12px 16px; font-size: 12px; }
 }
+
+/* ══════════════════════════════════════════════════
+   ADDITIONS — form fix, movement, cards, new stats
+   ══════════════════════════════════════════════════ */
+
+/* ── Form column fix ─────────────────────────────── */
+.form-track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+}
+.form-empty { color: #ccc; font-size: 11px; }
+/* Override any old form-dots that might cascade */
+.form-dots  { display: flex; flex-direction: row; flex-wrap: nowrap; gap: 3px; justify-content: center; }
+
+/* ── Position cell & movement arrows ─────────────── */
+.pos-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.mv-wrap    { font-size: 9px; font-weight: 700; letter-spacing: 0; line-height: 1; }
+.mv-up      { color: #2e7d32; }
+.mv-dn      { color: #c62828; }
+.mv-neutral { color: #bbb; font-size: 10px; }
+
+/* ── Clean sheet cell ────────────────────────────── */
+.cs-cell { color: #1565c0; font-weight: 700; }
+
+/* ── Admin — OG toggle ───────────────────────────── */
+.og-toggle {
+  display: flex; align-items: center; gap: 4px;
+  cursor: pointer; user-select: none;
+}
+.og-toggle input { width: 14px; height: 14px; accent-color: #1565c0; cursor: pointer; }
+.og-label  { font-size: 10px; font-weight: 700; color: #1565c0; letter-spacing: .5px; text-transform: uppercase; }
+.og-hint   { font-size: 10px; color: #aaa; font-weight: 400; margin-left: 6px; text-transform: none; letter-spacing: 0; }
+
+/* ── Goal & card entry rows ──────────────────────── */
+.goal-entry-header,
+.card-entry-header {
+  display: grid;
+  grid-template-columns: 50px 1fr 1fr 1fr 36px;
+  gap: 6px;
+  padding: 0 2px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #aaa;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+.card-entry-header { grid-template-columns: 1fr 1fr 1fr 36px; }
+
+.goal-entry-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 1fr 1fr 36px;
+  gap: 6px;
+  margin-bottom: 6px;
+  align-items: center;
+}
+.card-entry-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 36px;
+  gap: 6px;
+  margin-bottom: 6px;
+  align-items: center;
+}
+.goal-entry-row select,
+.card-entry-row select {
+  padding: 7px 8px;
+  border: 1.5px solid #e0e8e0;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  outline: none;
+  background: #fff;
+  width: 100%;
+  transition: border-color .2s;
+  cursor: pointer;
+}
+.goal-entry-row select:focus,
+.card-entry-row select:focus { border-color: var(--g4); }
+
+.add-entry-btn {
+  background: #e8f5e9;
+  border: 1.5px dashed var(--g4);
+  border-radius: 7px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--g4);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  transition: all .2s;
+  width: 100%;
+  margin-top: 4px;
+}
+.add-entry-btn:hover { background: #c8e6c9; }
+
+/* ── Admin export explainer ──────────────────────── */
+.export-explainer {
+  background: #f0f7f0;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #2e4a2e;
+}
+.export-explainer ol { margin: 8px 0 0 18px; }
+.export-explainer code {
+  background: #dcedc8; border-radius: 3px; padding: 1px 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+}
+.admin-md-label {
+  font-size: 11px; color: #aaa; letter-spacing: .5px;
+  margin-bottom: 12px; text-transform: uppercase;
+}
+.smb-dot  { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.smb-slot { background: #e8ede8; border-radius: 10px; padding: 2px 8px; font-size: 10px; color: #666; }
+
+/* ── Match detail bar (fixtures view) ────────────── */
+.match-detail-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 20px 14px;
+  background: #fafcfa;
+  border-top: 1px dashed #e0e8e0;
+}
+.match-event {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--white);
+  border: 1px solid #e0e8e0;
+  border-radius: 20px;
+  padding: 4px 11px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.evt-dot    { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.evt-icon   { font-size: 12px; }
+.evt-player { font-weight: 700; color: var(--g1); }
+.evt-assist { color: var(--mute); font-size: 11px; }
+
+/* ── Discipline / card pills ─────────────────────── */
+.card-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 9px; border-radius: 8px;
+}
+.card-pill.yc { background: #fff9c4; color: #5d4037; }
+.card-pill.rc { background: #ffebee; color: #c62828; }
+
+/* ── Squad player stat pills — new types ─────────── */
+.p-stat-pill.has-cs { background: #e3f2fd; color: #1565c0; }
+.p-stat-pill.has-yc { background: #fff9c4; color: #5d4037; }
+.p-stat-pill.has-rc { background: #ffebee; color: #c62828; }
+
+/* ── Leaderboard empty state ─────────────────────── */
+.lb-empty {
+  padding: 24px;
+  text-align: center;
+  color: #ccc;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* ── Standings table — CS column header ──────────── */
+.standings th.cs-th { color: #90caf9; }
+
+@media (max-width: 640px) {
+  .goal-entry-row { grid-template-columns: 44px 1fr 1fr 1fr 32px; gap: 4px; }
+  .card-entry-row { grid-template-columns: 1fr 1fr 1fr 32px; gap: 4px; }
+  .form-track     { min-width: 90px; }
+}
