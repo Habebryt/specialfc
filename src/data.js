@@ -46,29 +46,29 @@ export const SQUADS = {
 };
 
 export const FIXTURES = [
-  { md:1, date:"Sat 21 Mar 2026", matches:[
+  { md:1, date:"Sat 21 Mar 2026", matches:[   // ← PLAYED — First Leg
     { home:"Ajax",      away:"Flamengo",  slot:"Early" },
     { home:"Lyon",      away:"Wolfsburg", slot:"Late"  },
   ]},
-  { md:2, date:"Sat 04 Apr 2026", matches:[
+  { md:2, date:"Sat 04 Apr 2026", matches:[   // First Leg
     { home:"Flamengo",  away:"Wolfsburg", slot:"Early" },
     { home:"Ajax",      away:"Lyon",      slot:"Late"  },
   ]},
-  { md:3, date:"Sat 18 Apr 2026", matches:[
+  { md:3, date:"Sat 18 Apr 2026", matches:[   // First Leg
+    { home:"Ajax",      away:"Wolfsburg", slot:"Early" },
+    { home:"Flamengo",  away:"Lyon",      slot:"Late"  },
+  ]},
+  { md:4, date:"Sat 02 May 2026", matches:[   // Second Leg
+    { home:"Wolfsburg", away:"Lyon",      slot:"Early" },
+    { home:"Flamengo",  away:"Ajax",      slot:"Late"  },
+  ]},
+  { md:5, date:"Sat 16 May 2026", matches:[   // Second Leg
     { home:"Lyon",      away:"Ajax",      slot:"Early" },
     { home:"Wolfsburg", away:"Flamengo",  slot:"Late"  },
   ]},
-  { md:4, date:"Sat 02 May 2026", matches:[
-    { home:"Wolfsburg", away:"Ajax",      slot:"Early" },
-    { home:"Flamengo",  away:"Lyon",      slot:"Late"  },
-  ]},
-  { md:5, date:"Sat 16 May 2026", matches:[
+  { md:6, date:"Sat 06 Jun 2026", matches:[   // Second Leg
     { home:"Lyon",      away:"Flamengo",  slot:"Early" },
-    { home:"Ajax",      away:"Wolfsburg", slot:"Late"  },
-  ]},
-  { md:6, date:"Sat 06 Jun 2026", matches:[
-    { home:"Wolfsburg", away:"Lyon",      slot:"Early" },
-    { home:"Flamengo",  away:"Ajax",      slot:"Late"  },
+    { home:"Wolfsburg", away:"Ajax",      slot:"Late"  },
   ]},
 ];
 
