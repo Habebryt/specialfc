@@ -29,7 +29,7 @@ export const TEAMS = {
 export const SQUADS = {
   Ajax: [
     "Clint", "Don", "Ps5", "T.M",
-    "Near Here", "Matthew", "Energy", "Val", "Praise",
+    "Near Here", "Matthew", "Energy", "Val", "Praise", "Udo",
   ],
   Flamengo: [
     "Shola", "Khalifa", "Mamba", "Yinka",
@@ -161,6 +161,49 @@ export const RESULTS = {
         "player": "Gerald"
       }
     ]
+  },
+  "2-0": {
+    "hg": "1",
+    "ag": "1",
+    "events": [
+      {
+        "type": "goal",
+        "team": "Wolfsburg",
+        "scorer": "Brown",
+        "assist": ""
+      }
+    ],
+    "cards": [
+      {
+        "type": "red",
+        "team": "Wolfsburg",
+        "player": "Kayode"
+      },
+      {
+        "type": "yellow",
+        "team": "Wolfsburg",
+        "player": "Habeeb"
+      }
+    ]
+  },
+  "2-1": {
+    "hg": "2",
+    "ag": "0",
+    "events": [
+      {
+        "type": "goal",
+        "team": "Ajax",
+        "scorer": "Clint",
+        "assist": "Udo"
+      },
+      {
+        "type": "goal",
+        "team": "Ajax",
+        "scorer": "Clint",
+        "assist": ""
+      }
+    ],
+    "cards": []
   }
 };
 // ══════════════════════════════════════════════════════════════
